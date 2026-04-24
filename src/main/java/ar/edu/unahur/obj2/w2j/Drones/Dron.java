@@ -28,6 +28,8 @@ public abstract class Dron {
 
     public void setAutonomia(Double autonomia) { this.autonomia = autonomia; }
 
+    public void reducirAutonomia(Double cantidad) { this.autonomia = Math.max(0, this.autonomia - cantidad); }
+
     public Double getProcesamiento() { return procesamiento; }
 
     public void setProcesamiento(Double procesamiento) { this.procesamiento = procesamiento; }
@@ -41,8 +43,6 @@ public abstract class Dron {
     public void añadirSensor(Sensor nuevoSensor) { this.sensores.add(nuevoSensor); }
 
     public Double getEficiencia() { return (autonomia * 10) + mision.extraEficiencia(this); }
-
-    public Double getCapacidadOperativa() { return sensores.stream().mapToDouble(s -> s.getCapacidad()).sum(); }
 
     public Boolean esAvanzadoEnSuMision() { return mision.getExigencia(this); }
 

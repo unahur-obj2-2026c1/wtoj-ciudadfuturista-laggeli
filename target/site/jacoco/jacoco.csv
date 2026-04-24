@@ -1,0 +1,11 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+ciudadfuturista,ar.edu.unahur.obj2.w2j.Drones,Sensor,33,0,4,0,7,0,8,0,6,0
+ciudadfuturista,ar.edu.unahur.obj2.w2j.Drones,Dron,41,59,0,0,11,13,6,8,6,8
+ciudadfuturista,ar.edu.unahur.obj2.w2j.Drones,DronComercial,7,16,0,0,2,4,1,3,1,3
+ciudadfuturista,ar.edu.unahur.obj2.w2j.Drones,Escuadron,22,90,3,5,5,14,5,10,2,9
+ciudadfuturista,ar.edu.unahur.obj2.w2j.Drones,DronSeguridad,8,20,1,1,2,3,2,2,1,2
+ciudadfuturista,ar.edu.unahur.obj2.w2j.Ciudad,Zona,4,28,0,0,1,8,1,5,1,5
+ciudadfuturista,ar.edu.unahur.obj2.w2j.Ciudad,CiudadFuturista,4,17,0,0,1,5,1,4,1,4
+ciudadfuturista,ar.edu.unahur.obj2.w2j.Misiones,MisionTransporte,4,11,0,0,0,3,1,3,1,3
+ciudadfuturista,ar.edu.unahur.obj2.w2j.Misiones,MisionExploracion,12,3,2,0,2,1,3,1,2,1
+ciudadfuturista,ar.edu.unahur.obj2.w2j.Misiones,MisionVigilancia,25,3,2,0,3,1,4,1,3,1

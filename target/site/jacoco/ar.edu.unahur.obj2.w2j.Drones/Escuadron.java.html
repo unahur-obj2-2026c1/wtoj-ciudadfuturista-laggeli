@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Escuadron.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ciudadfuturista</a> &gt; <a href="index.source.html" class="el_package">ar.edu.unahur.obj2.w2j.Drones</a> &gt; <span class="el_source">Escuadron.java</span></div><h1>Escuadron.java</h1><pre class="source lang-java linenums">package ar.edu.unahur.obj2.w2j.Drones;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import ar.edu.unahur.obj2.w2j.Ciudad.CiudadFuturista;
+import ar.edu.unahur.obj2.w2j.Ciudad.Zona;
+
+public class Escuadron {
+<span class="pc" id="L10">    private Integer limite = CiudadFuturista.getInstance().getLimite();</span>
+<span class="pc" id="L11">    private List&lt;Dron&gt; drones = new ArrayList&lt;&gt;();</span>
+
+<span class="fc" id="L13">    public Escuadron(Integer limite) { this.limite = limite; }</span>
+
+<span class="nc" id="L15">    public Escuadron(Integer limite, List&lt;Dron&gt; drones) {</span>
+<span class="nc" id="L16">        this.limite = limite;</span>
+<span class="nc" id="L17">        this.drones = drones;</span>
+<span class="nc" id="L18">    }</span>
+
+<span class="nc" id="L20">    public Integer getLimite() { return limite; }</span>
+
+<span class="fc" id="L22">    public List&lt;Dron&gt; getDrones() { return drones; }</span>
+
+    public void agregarDron(Dron nuevoDron) { 
+<span class="fc bfc" id="L25" title="All 2 branches covered.">        if (drones.size() &lt; limite) { this.drones.add(nuevoDron); }</span>
+<span class="fc" id="L26">        else { throw new RuntimeException(&quot;Supera la cantidad máxima definida por la ciudad&quot;); }</span>
+        // no sé si estará bien usada está excepción acá
+<span class="fc" id="L28">    }</span>
+
+<span class="fc" id="L30">    public Double capacidadOperativa() { return drones.stream().mapToDouble(d -&gt; d.getEficiencia()).sum(); }</span>
+
+    public Boolean puedeOperarEnZona(Zona unaZona) { 
+<span class="pc bpc" id="L33" title="1 of 2 branches missed.">        return drones.stream().anyMatch(d -&gt; d.esAvanzado()) &amp;&amp; </span>
+<span class="pc bpc" id="L34" title="1 of 2 branches missed.">        this.capacidadOperativa() &gt; (unaZona.getTamaño() * 2);</span>
+    }
+
+    public void operarEnZona(Zona unaZona) {
+<span class="pc bpc" id="L38" title="1 of 2 branches missed.">        if (puedeOperarEnZona(unaZona)) {</span>
+<span class="fc" id="L39">            unaZona.registrarOperacion();</span>
+<span class="fc" id="L40">            drones.forEach(d -&gt; d.reducirAutonomia(2.0));</span>
+        }
+<span class="fc" id="L42">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

@@ -21,15 +21,23 @@ public class Escuadron {
 
     public List<Dron> getDrones() { return drones; }
 
-    public void añadirDron(Dron nuevoDron) { 
+    public void agregarDron(Dron nuevoDron) { 
         if (drones.size() < limite) { this.drones.add(nuevoDron); }
         else { throw new RuntimeException("Supera la cantidad máxima definida por la ciudad"); }
+        // no sé si estará bien usada está excepción acá
     }
 
-    public Double capacidadOperativa() { return drones.stream().mapToDouble(d -> d.getCapacidadOperativa()).sum(); }
+    public Double capacidadOperativa() { return drones.stream().mapToDouble(d -> d.getEficiencia()).sum(); }
 
     public Boolean puedeOperarEnZona(Zona unaZona) { 
         return drones.stream().anyMatch(d -> d.esAvanzado()) && 
         this.capacidadOperativa() > (unaZona.getTamaño() * 2);
+    }
+
+    public void operarEnZona(Zona unaZona) {
+        if (puedeOperarEnZona(unaZona)) {
+            unaZona.registrarOperacion();
+            drones.forEach(d -> d.reducirAutonomia(2.0));
+        }
     }
 }
